@@ -1,6 +1,5 @@
 import './styles.css';
 import items from './menu.json';
-console.log(items);
 
 // const switcher = document.querySelector('#switcher-1');
 // const switcher2 = document.querySelector('#switcher-2');
