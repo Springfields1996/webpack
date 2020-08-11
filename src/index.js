@@ -18,20 +18,20 @@ const Theme = {
 const themeSwitcher = event => {
   if (!event.target.checked) {
     localStorage.setItem('theme', Theme.LIGHT);
-    classAdd(`${Theme.LIGHT}`);
-    classRemove(`${Theme.DARK}`);
+    classAdd(Theme.LIGHT);
+    classRemove(Theme.DARK);
   } else {
     localStorage.setItem('theme', Theme.DARK);
-    classAdd(`${Theme.DARK}`);
-    classRemove(`${Theme.LIGHT}`);
+    classAdd(Theme.DARK);
+    classRemove(Theme.LIGHT);
   }
 };
 
 themeSwitch.addEventListener('change', themeSwitcher);
 
 localStorage.getItem('theme') === Theme.DARK
-  ? (classAdd(`${Theme.DARK}`), (themeSwitch.checked = true))
-  : classAdd(`${Theme.LIGHT}`);
+  ? (classAdd(Theme.DARK), (themeSwitch.checked = true))
+  : classAdd(Theme.LIGHT);
 
 // const switcher = document.querySelector('#switcher-1');
 // const switcher2 = document.querySelector('#switcher-2');
