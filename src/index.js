@@ -1,11 +1,14 @@
 import './styles.css';
 import items from './menu.json';
-console.log(items);
+import templateItem from './templates/menu-item.hbs';
 
 const body = document.querySelector('body');
 const menuList = document.querySelector('.js-menu');
 const themeSwitch = document.querySelector('#theme-switch-control');
-const classes = body.classList;
+const classAdd = body.classList.add.bind(body.classList);
+const classRemove = body.classList.remove.bind(body.classList);
+
+menuList.insertAdjacentHTML('afterbegin', templateItem(items));
 
 const Theme = {
   LIGHT: 'light-theme',
@@ -13,22 +16,22 @@ const Theme = {
 };
 
 const themeSwitcher = event => {
-  if (event.target.checked) {
+  if (!event.target.checked) {
     localStorage.setItem('theme', Theme.LIGHT);
-    classes.add(`${Theme.LIGHT}`);
-    classes.remove(`${Theme.DARK}`);
+    classAdd(`${Theme.LIGHT}`);
+    classRemove(`${Theme.DARK}`);
   } else {
     localStorage.setItem('theme', Theme.DARK);
-    classes.add(`${Theme.DARK}`);
-    classes.remove(`${Theme.LIGHT}`);
+    classAdd(`${Theme.DARK}`);
+    classRemove(`${Theme.LIGHT}`);
   }
 };
 
-themeSwitch.addEventListener('click', themeSwitcher);
+themeSwitch.addEventListener('change', themeSwitcher);
 
-localStorage.getItem('theme') === 'dark-theme'
-  ? body.classList.add(`${Theme.DARK}`)
-  : body.classList.add(`${Theme.LIGHT}`);
+localStorage.getItem('theme') === Theme.DARK
+  ? (classAdd(`${Theme.DARK}`), (themeSwitch.checked = true))
+  : classAdd(`${Theme.LIGHT}`);
 
 // const switcher = document.querySelector('#switcher-1');
 // const switcher2 = document.querySelector('#switcher-2');
