@@ -15,23 +15,29 @@ const Theme = {
   DARK: 'dark-theme',
 };
 
+const { LIGHT, DARK } = Theme;
+
 checkTheme();
 
 function checkTheme() {
-  localStorage.getItem('theme') === Theme.DARK
-    ? (classAdd(Theme.DARK), (themeSwitch.checked = true))
-    : classAdd(Theme.LIGHT);
+  localStorage.getItem('theme') === DARK
+    ? (classAdd(DARK), (themeSwitch.checked = true))
+    : classAdd(LIGHT);
+}
+
+function writeInLocalStorage(key, value) {
+  localStorage.setItem(key, value);
 }
 
 const themeSwitcher = event => {
   if (!event.target.checked) {
-    localStorage.setItem('theme', Theme.LIGHT);
-    classAdd(Theme.LIGHT);
-    classRemove(Theme.DARK);
+    writeInLocalStorage('theme', LIGHT);
+    classAdd(LIGHT);
+    classRemove(DARK);
   } else {
-    localStorage.setItem('theme', Theme.DARK);
-    classAdd(Theme.DARK);
-    classRemove(Theme.LIGHT);
+    writeInLocalStorage('theme', DARK);
+    classAdd(DARK);
+    classRemove(LIGHT);
   }
 };
 
@@ -207,3 +213,21 @@ themeSwitch.addEventListener('change', themeSwitcher);
 // stopButton.addEventListener('click', stopCount);
 
 // lapButton.addEventListener('click', setLap);
+
+// const inputCountry = document.querySelector('#input');
+// let countryName = null;
+
+// inputCountry.addEventListener(
+//   'input',
+//   _.debounce(event => (countryName = event.target.value)),
+//   500,
+// );
+
+// function getCountry(countryName) {
+//   let selectedCountry = fetch(
+//     `https://restcountries.eu/rest/v2/name/${countryName}`,
+//   );
+//   return selectedCountry;
+// }
+
+// getAddress().then(country => console.log(country));
