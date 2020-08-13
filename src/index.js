@@ -1,41 +1,41 @@
-// import './styles.css';
-// import items from './menu.json';
-// import templateItem from './templates/menu-item.hbs';
+import './styles.css';
+import items from './menu.json';
+import templateItem from './templates/menu-item.hbs';
 
-// const body = document.querySelector('body');
-// const menuList = document.querySelector('.js-menu');
-// const themeSwitch = document.querySelector('#theme-switch-control');
-// const classAdd = body.classList.add.bind(body.classList);
-// const classRemove = body.classList.remove.bind(body.classList);
+const body = document.querySelector('body');
+const menuList = document.querySelector('.js-menu');
+const themeSwitch = document.querySelector('#theme-switch-control');
+const classAdd = body.classList.add.bind(body.classList);
+const classRemove = body.classList.remove.bind(body.classList);
 
-// menuList.insertAdjacentHTML('afterbegin', templateItem(items));
+menuList.insertAdjacentHTML('afterbegin', templateItem(items));
 
-// const Theme = {
-//   LIGHT: 'light-theme',
-//   DARK: 'dark-theme',
-// };
+const Theme = {
+  LIGHT: 'light-theme',
+  DARK: 'dark-theme',
+};
 
-// checkTheme();
+checkTheme();
 
-// function checkTheme() {
-//   localStorage.getItem('theme') === Theme.DARK
-//     ? (classAdd(Theme.DARK), (themeSwitch.checked = true))
-//     : classAdd(Theme.LIGHT);
-// }
+function checkTheme() {
+  localStorage.getItem('theme') === Theme.DARK
+    ? (classAdd(Theme.DARK), (themeSwitch.checked = true))
+    : classAdd(Theme.LIGHT);
+}
 
-// const themeSwitcher = event => {
-//   if (!event.target.checked) {
-//     localStorage.setItem('theme', Theme.LIGHT);
-//     classAdd(Theme.LIGHT);
-//     classRemove(Theme.DARK);
-//   } else {
-//     localStorage.setItem('theme', Theme.DARK);
-//     classAdd(Theme.DARK);
-//     classRemove(Theme.LIGHT);
-//   }
-// };
+const themeSwitcher = event => {
+  if (!event.target.checked) {
+    localStorage.setItem('theme', Theme.LIGHT);
+    classAdd(Theme.LIGHT);
+    classRemove(Theme.DARK);
+  } else {
+    localStorage.setItem('theme', Theme.DARK);
+    classAdd(Theme.DARK);
+    classRemove(Theme.LIGHT);
+  }
+};
 
-// themeSwitch.addEventListener('change', themeSwitcher);
+themeSwitch.addEventListener('change', themeSwitcher);
 
 ////////////////////////////////////////////////////// END Of HOMEWORK /////////////////////////////////////////////////
 
